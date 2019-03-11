@@ -2,7 +2,7 @@
 ใช้สำหรับดึงข้อมูลสินค้ามาแสดงบนเว็บ
 
 ## วิธีทดสอบ
-ทำการ build ด้วย Gradle version 2.0+
+ทำการ build ด้วย Gradle & SprintBoot version 2.0+
 
 ## EndPoint
 - ```GET /api/product```<br>
