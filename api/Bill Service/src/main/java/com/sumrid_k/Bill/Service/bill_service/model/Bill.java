@@ -1,8 +1,8 @@
 package com.sumrid_k.Bill.Service.bill_service.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Bill {
@@ -11,16 +11,15 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private Date date;
-    @ManyToMany
-    private List<Product> product;
+    private ArrayList<Product> productId;
     private int amount;
     private double totalPrice;
     private String companyName;
 
-    public Bill(Date date, int id, List<Product> product, int amount, double totalPrice, String companyName) {
+    public Bill(Date date, int id, ArrayList<Product> productId, int amount, double totalPrice, String companyName) {
         this.date = date;
         this.id = id;
-        this.product = product;
+        this.productId = productId;
         this.amount = amount;
         this.totalPrice = totalPrice;
         this.companyName = companyName;
@@ -45,12 +44,12 @@ public class Bill {
         this.id = id;
     }
 
-    public List<Product> getProduct() {
-        return product;
+    public ArrayList<Product> getProductId() {
+        return productId;
     }
 
-    public void setProduct(List<Product> product) {
-        this.product = product;
+    public void setProductId(ArrayList<Product> productId) {
+        this.productId = productId;
     }
 
     public int getAmount() {
