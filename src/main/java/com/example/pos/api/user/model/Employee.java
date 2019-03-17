@@ -1,20 +1,24 @@
-package com.example.pos.model;
+package com.example.pos.api.user.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.ArrayList;
 
+@Entity
 public class Employee {
-    private String id;
+    private @Id @GeneratedValue Long id;
     private String name;
     private String username;
     private String email;
     private String address;
     private String role;
 
-    public  Employee(String id, ArrayList mockEmployee){
+    public Employee(){
 
     }
 
-    public Employee(String id, String name, String username, String email, String address, String role) {
+    public Employee(Long id, String name, String username, String email, String address, String role) {
         this.setId(id);
         this.setName(name);
         this.setUsername(username);
@@ -23,11 +27,11 @@ public class Employee {
         this.setRole(role);
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
