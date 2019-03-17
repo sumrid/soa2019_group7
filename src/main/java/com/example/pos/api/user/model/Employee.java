@@ -3,7 +3,6 @@ package com.example.pos.api.user.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.ArrayList;
 
 @Entity
 public class Employee {
