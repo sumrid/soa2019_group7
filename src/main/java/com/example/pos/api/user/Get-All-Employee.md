@@ -1,6 +1,5 @@
 # User Service
-## GET All Employee
-Get all employee
+## GET/ Get All Employee
 
 * http://localhost:8080/employee
 
@@ -20,7 +19,7 @@ Here is the expectation response
     }
 
 ```
-## GET Employee By ID
+## GET/ Get Employee By ID
 
 * http://localhost:8080/employee/1
 
