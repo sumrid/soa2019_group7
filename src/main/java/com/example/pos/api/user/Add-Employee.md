@@ -1,13 +1,13 @@
 # User Service
 ## POST/ Add Employee
 
-* http://localhost:8080/employee
+* http://localhost:8080/employee/1
 
 
 ```JSON
 
     {
-        "name": "Leanne Graham",
+        "name": "Sedah Endless",
         "username": "Bret",
         "email": "Sincere@april.biz",
         "address": "7/65 Bangkok 10170",
@@ -19,8 +19,8 @@
 
 ## Expectation
 
-New post should be created.
+Employee info should be updated.
 
 | Assert | Expected |
 | - | - |
-| StatusCode | 201 |
+| StatusCode | 200 |
