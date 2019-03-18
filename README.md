@@ -2,14 +2,14 @@
 ระบบอช่วยอำนวยความสะดวกในการขายของตามร้านต่างๆ
 
 ## How to Build & Run
-### complie 
-- `mvnw clean package`
+- ### complie 
+   - `mvnw clean package`
 
-### run project 
-- `mvnw spring-boot:run`
+- ### run project 
+   - `mvnw spring-boot:run`
 
-### test
-- `mvnw test`
+- ### test
+   - `mvnw test`
    
 ## API List
 - [User Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/user)
