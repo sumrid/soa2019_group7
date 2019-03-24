@@ -61,7 +61,7 @@ public class StockControllerTest {
         stockRepository.deleteAll();
     }
 
-    // --------------- Work in progress ----------------
+    // ---------------  Work in progress ----------------
 //    @Test
 //    public void getStock(){
 //        ResponseEntity<Stock> responseEntity = testRestTemplate.getForEntity("/stocks/1", Stock.class);
