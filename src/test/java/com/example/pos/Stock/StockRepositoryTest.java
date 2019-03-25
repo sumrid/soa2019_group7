@@ -48,7 +48,6 @@ public class StockRepositoryTest {
         stockRepository.deleteAll();
     }
 
-    @Test
     public void findById(){
 
         Optional<Stock> stock = stockRepository.findById(data1.getId());
