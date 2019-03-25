@@ -16,8 +16,8 @@ public class StockService {
     private StockRepository stockRepository;
 
     // Get by ID
-    public Stock getStock(int id){
-        return stockRepository.findById(id).get();
+    public Optional<Stock> getStock(int id){
+        return stockRepository.findById(id);
     }
 
     // Get all Stocks

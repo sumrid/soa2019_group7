@@ -13,19 +13,29 @@ public class Stock {
     private int id;
     private String name;
     private String date;
+    private String data_out;
     private int quantity;
     private double price;
     private String status;
 
     public Stock(){}
 
-    public Stock(int id, String name, String date, int quantity, double price, String status) {
+    public Stock(int id, String name, String date, int quantity, double price, String status, String data_out) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.quantity = quantity;
         this.price = price;
         this.status = status;
+        this.data_out = data_out;
+    }
+
+    public String getData_out() {
+        return data_out;
+    }
+
+    public void setData_out(String data_out) {
+        this.data_out = data_out;
     }
 
     public int getId() {
