@@ -8,7 +8,12 @@
 
 - ### test -- > `mvnw test`
   
-   
+## Deployment
+  ```
+  https://soa-group7-235616.appspot.com/ {EndPoint}
+  ```
+   ###### example : https://<span></span>soa-group7-235616.appspot.com/employee
+
 ## API List
 - [User Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/user)
    - ```POST /employee``` ~ เพิ่มข้อมูลบัญชีพนักงานสำหรับใช้งานระบบ<br>
