@@ -12,22 +12,32 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    private String date;
+    private String date_in;
     private String date_out;
     private int quantity;
     private double price;
     private String status;
+    private int productId;
 
     public Stock(){}
 
-    public Stock(int id, String name, String date, int quantity, double price, String status, String date_out) {
+    public Stock(int id, String name, String date_in, int quantity, double price, String status, String date_out, int productId) {
         this.id = id;
         this.name = name;
-        this.date = date;
+        this.date_in = date_in;
         this.quantity = quantity;
         this.price = price;
         this.status = status;
         this.date_out = date_out;
+        this.productId = productId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getDate_out() {
@@ -54,12 +64,12 @@ public class Stock {
         this.name = name;
     }
 
-    public String getDate() {
-        return date;
+    public String getDate_in() {
+        return date_in;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate_in(String date_in) {
+        this.date_in = date_in;
     }
 
     public int getQuantity() {

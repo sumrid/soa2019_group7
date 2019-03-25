@@ -29,28 +29,31 @@ public class StockControllerTest {
     @Before
     public void initData(){
         Stock data1 = new Stock();
-        data1.setDate("19/4/98");
+        data1.setDate_in("19/4/98");
         data1.setDate_out("11/12/98");
         data1.setName("Apple Jumkad");
         data1.setPrice(25000.25);
         data1.setStatus("OK");
         data1.setQuantity(4000);
+        data1.setProductId(12907);
 
         Stock data2 = new Stock();
-        data2.setDate("24/8/97");
+        data2.setDate_in("24/8/97");
         data2.setDate_out("11/12/98");
         data2.setName("Android Jumkad");
         data2.setPrice(15000.75);
         data2.setStatus("NOT OK");
         data2.setQuantity(2000);
+        data2.setProductId(12908);
 
         Stock data3 = new Stock();
-        data3.setDate("24/8/97");
-        data3.setDate_out("11/12/98");
-        data3.setName("Android Jumkad");
-        data3.setPrice(15000.75);
-        data3.setStatus("NOT OK");
-        data3.setQuantity(2000);
+        data3.setDate_in("30/1/96");
+        data3.setDate_out("22/11/98");
+        data3.setName("XiaoMii Jumkad");
+        data3.setPrice(12500.25);
+        data3.setStatus("OK");
+        data3.setQuantity(1000);
+        data3.setProductId(12909);
 
         stockRepository.save(data1);
         stockRepository.save(data2);
@@ -73,17 +76,18 @@ public class StockControllerTest {
 //        ResponseEntity<Stock> responseEntity = testRestTemplate.getForEntity("/stocks" + id, Stock.class);
 
 //        assertEquals("OK", responseEntity.getBody().getStatus());
-//        assertEquals("19/4/98", responseEntity.getBody().getDate());
+//        assertEquals("19/4/98", responseEntity.getBody().getDate_in());
 //        assertEquals("11/12/98", responseEntity.getBody().getDate_out());
 //        assertEquals(25000.25, responseEntity.getBody().getPrice(), 0.00);
 //        assertEquals(4000, responseEntity.getBody().getQuantity());
         // ----------------------------------------------------------------------------------------------
 
         assertEquals("OK", stocks.get().getStatus());
-        assertEquals("19/4/98", stocks.get().getDate());
+        assertEquals("19/4/98", stocks.get().getDate_in());
         assertEquals("11/12/98", stocks.get().getDate_out());
         assertEquals(25000.25, stocks.get().getPrice(), 0.00);
         assertEquals(4000, stocks.get().getQuantity());
+        assertEquals(12907, stocks.get().getProductId());
 
     }
 
@@ -100,18 +104,22 @@ public class StockControllerTest {
     public void createNewStock(){
         Stock newStock = new Stock();
         newStock.setName("Tomatoes");
-        newStock.setDate("4/11/99");
+        newStock.setDate_in("4/11/91");
+        newStock.setDate_out("1/4/98");
         newStock.setQuantity(1000);
         newStock.setPrice(4500.50);
         newStock.setStatus("OK");
+        newStock.setProductId(12301);
 
         ResponseEntity<Stock> responseEntity = testRestTemplate.postForEntity("/stocks", newStock, Stock.class);
 
         assertEquals("Tomatoes", responseEntity.getBody().getName());
-        assertEquals("4/11/99", responseEntity.getBody().getDate());
+        assertEquals("4/11/91", responseEntity.getBody().getDate_in());
+        assertEquals("1/4/98", responseEntity.getBody().getDate_out());
         assertEquals(1000, responseEntity.getBody().getQuantity());
         assertEquals(4500.50, responseEntity.getBody().getPrice(), 0.00);
         assertEquals("OK", responseEntity.getBody().getStatus());
+        assertEquals(12301, responseEntity.getBody().getProductId());
     }
 
     // Delete Test
