@@ -18,7 +18,12 @@
    - ```DELETE /employee/{id}``` ~ ลบข้อมูลบัญชีพนักงานจากไอดี<br>
 <br>
 
-- Product Service
+- [Product Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/product)
+   - ```POST /product/save``` ~ เพิ่มข้อมูลรายการสินค้าในระบบ<br>
+   - ```GET /product``` ~ แสดงข้อมูลสินค้าทั้งหมดในระบบ<br>
+   - ```GET /product/{id}``` ~ แสดงสินค้างานจากไอดี<br>
+   - ```PUT /product/{id}``` ~ แก้ไขข้อมูลสิค้าจากไอดี<br>
+   - ```DELETE /product/{id}``` ~ ลบข้อมูลสินค้าจากไอดี<br>
 - Stock Service
 - Bill Service
 
