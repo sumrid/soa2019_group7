@@ -2,12 +2,18 @@ package com.example.pos.Stock;
 
 import com.example.pos.api.stock.Model.Stock;
 import com.example.pos.api.stock.Repository.StockRepository;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Optional;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -17,9 +23,14 @@ public class StockRepositoryTest {
     @Autowired
     private StockRepository stockRepository;
 
+    @Autowired
+    private TestEntityManager entityManager;
+
+    private Stock data1;
+
     @Before
     public void initData(){
-        Stock data1 = new Stock();
+        data1 = new Stock();
         data1.setDate_in("19/4/98");
         data1.setDate_out("11/12/98");
         data1.setName("Apple Jumkad");
@@ -28,41 +39,29 @@ public class StockRepositoryTest {
         data1.setQuantity(4000);
         data1.setProductId(12907);
 
-        Stock data2 = new Stock();
-        data2.setDate_in("24/8/97");
-        data2.setDate_out("11/12/98");
-        data2.setName("Android Jumkad");
-        data2.setPrice(15000.75);
-        data2.setStatus("NOT OK");
-        data2.setQuantity(2000);
-        data2.setProductId(12908);
+        entityManager.persist(data1);
+        
+    }
 
-        stockRepository.save(data1);
-        stockRepository.save(data2);
+    @After
+    public void clearData(){
+        stockRepository.deleteAll();
     }
 
     @Test
     public void findById(){
-        Stock stock = stockRepository.findById(2).get();
-        assertEquals(2, stock.getId());
-        assertEquals("Android Jumkad", stock.getName());
-        assertEquals("24/8/97", stock.getDate_in());
-        assertEquals("11/12/98", stock.getDate_out());
-        assertEquals(15000.75, stock.getPrice(), 0.00);
-        assertEquals("NOT OK", stock.getStatus());
-        assertEquals(2000, stock.getQuantity());
-        assertEquals(12908, stock.getProductId());
+
+        Optional<Stock> stock = stockRepository.findById(data1.getId());
+        assertThat(stock.get().equals(data1));
+
     }
 
     @Test
     public void findByName(){
-        Stock stock = stockRepository.findByName("Apple Jumkad").get();
-        assertEquals("19/4/98", stock.getDate_in());
-        assertEquals("11/12/98", stock.getDate_out());
-        assertEquals(25000.25, stock.getPrice(), 0.00);
-        assertEquals("OK", stock.getStatus());
-        assertEquals(4000, stock.getQuantity());
-        assertEquals(12907, stock.getProductId());
+
+        Optional<Stock> stock = stockRepository.findByName(data1.getName());
+        assertThat(stock.get().equals(data1));
+
     }
 
 
