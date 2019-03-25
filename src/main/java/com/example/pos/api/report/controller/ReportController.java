@@ -15,20 +15,30 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
-    private RestTemplate restTemplate = new RestTemplate();
-
-    @GetMapping("/profit")
-    public ResponseEntity getReports() {
-        return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/bestseller")
+    @GetMapping()
     public ResponseEntity getReport() {
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(reportService.getReport());
     }
 
-    @GetMapping("/productquantity")
-    public ResponseEntity updateReport() {
-        return ResponseEntity.ok().build();
+    // for get data from all service
+    // for test
+    @GetMapping("/getdata")
+    public void getData() {
+        reportService.getDataAllServices();
     }
+
+//    @GetMapping("/profit")
+//    public ResponseEntity getProfit() {
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @GetMapping("/bestseller")
+//    public ResponseEntity getBestSeller() {
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    @GetMapping("/productquantity")
+//    public ResponseEntity updateReport() {
+//        return ResponseEntity.ok().build();
+//    }
 }

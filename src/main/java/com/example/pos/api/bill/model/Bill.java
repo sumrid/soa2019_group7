@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
@@ -13,7 +12,7 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private Date date;
-    private ArrayList<Integer> productId;
+    private long productId;
     private double amount;
     private double totalPrice;
     private String companyName;
@@ -21,7 +20,7 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(Date date, ArrayList<Integer> productId, double amount, double totalPrice, String companyName) {
+    public Bill(Date date, long productId, double amount, double totalPrice, String companyName) {
         this.date = date;
         this.productId = productId;
         this.amount = amount;
@@ -45,11 +44,11 @@ public class Bill {
         this.date = date;
     }
 
-    public ArrayList<Integer> getProductId() {
+    public long getProductId() {
         return productId;
     }
 
-    public void setProductId(ArrayList<Integer> productId) {
+    public void setProductId(long productId) {
         this.productId = productId;
     }
 
