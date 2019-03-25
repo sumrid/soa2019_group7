@@ -31,6 +31,21 @@
   #### GET >> http://localhost:8080/product
 
 ---
+- ### แสดงข้อมูลบัญชีพนักงานจากไอดี
+  #### GET >> http://localhost:8080/product/1
+  **Expectation**<br>
+  Here is the expectation response
+  ```
+    {
+        "id": 1,
+        "detail": "product detail",
+        "name": "ProductName1",
+        "price": 2500,
+        "quantity": 300,
+        "img": "http://img.url"
+    }
+    ```
+ ---
  
 - ### แก้ไขข้อมูลสินค้าจากไอดี
   #### PUT >> http://localhost:8080/product/ { id }
