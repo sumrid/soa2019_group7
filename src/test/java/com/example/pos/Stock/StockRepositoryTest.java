@@ -43,7 +43,7 @@ public class StockRepositoryTest {
 
     @Test
     public void findById(){
-        Stock stock = stockRepository.findById(2).get();
+        Stock stock = stockRepository.findById(1).get();
         assertEquals(2, stock.getId());
         assertEquals("Android Jumkad", stock.getName());
         assertEquals("24/8/97", stock.getDate_in());
