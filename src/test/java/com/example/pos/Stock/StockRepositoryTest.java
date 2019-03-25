@@ -44,5 +44,11 @@ public class StockRepositoryTest {
         assertEquals("Android Jumkad", stock.getName());
     }
 
+    @Test
+    public void findByName(){
+        Stock stock = stockRepository.findByName("Android Jumkad").get();
+        assertEquals("24/8/97", stock.getDate());
+    }
+
 
 }

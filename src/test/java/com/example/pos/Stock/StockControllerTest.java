@@ -1,5 +1,4 @@
 package com.example.pos.Stock;
-
 import com.example.pos.api.stock.Model.Stock;
 import com.example.pos.api.stock.Repository.StockRepository;
 import org.junit.After;
@@ -18,7 +17,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest (webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class StockControllerTest {
 
     @Autowired
@@ -27,11 +26,11 @@ public class StockControllerTest {
     @Autowired
     private StockRepository stockRepository;
 
-    // Create example data
     @Before
     public void initData(){
         Stock data1 = new Stock();
         data1.setDate("19/4/98");
+        data1.setDate_out("11/12/98");
         data1.setName("Apple Jumkad");
         data1.setPrice(25000.25);
         data1.setStatus("OK");
@@ -39,6 +38,7 @@ public class StockControllerTest {
 
         Stock data2 = new Stock();
         data2.setDate("24/8/97");
+        data2.setDate_out("11/12/98");
         data2.setName("Android Jumkad");
         data2.setPrice(15000.75);
         data2.setStatus("NOT OK");
@@ -46,6 +46,7 @@ public class StockControllerTest {
 
         Stock data3 = new Stock();
         data3.setDate("24/8/97");
+        data3.setDate_out("11/12/98");
         data3.setName("Android Jumkad");
         data3.setPrice(15000.75);
         data3.setStatus("NOT OK");
@@ -61,38 +62,40 @@ public class StockControllerTest {
         stockRepository.deleteAll();
     }
 
-    // ---------------  Work in progress ----------------
-//    @Test
-//    public void getStock(){
-//        ResponseEntity<Stock> responseEntity = testRestTemplate.getForEntity("/stocks/1", Stock.class);
-//
-//        assertEquals(1, responseEntity.getBody().getId());
-//        assertEquals("Apple Jumkad", responseEntity.getBody().getName());
-//        assertEquals("19/4/98", responseEntity.getBody().getDate());
-//        assertEquals(25000.25, responseEntity.getBody().getPrice(), 0.00);
-//        assertEquals("OK", responseEntity.getBody().getStatus());
-//        assertEquals(4000, responseEntity.getBody().getQuantity());
-//    }
-//
-//    @Test
-//    public void getStock2(){
-//        ResponseEntity<Stock> responseEntity = testRestTemplate.getForEntity("/stocks/2", Stock.class);
-//        assertEquals(2, responseEntity.getBody().getId());
-//        assertEquals("Android Jumkad", responseEntity.getBody().getName());
-//        assertEquals("24/8/97", responseEntity.getBody().getDate());
-//        assertEquals(15000.75, responseEntity.getBody().getPrice(), 0.00);
-//        assertEquals("NOT OK", responseEntity.getBody().getStatus());
-//        assertEquals(2000, responseEntity.getBody().getQuantity());
-//    }
-
-    // find size ( Expected : 3 )
+    // Find a stock by name
     @Test
-    public void getStocks(){
+    public void getStock(){
+        Optional<Stock> stocks = stockRepository.findByName("Apple Jumkad");
+
+        // --------------- Not working -----------------------------------------------------------------
+//        int id = stocks.get().getId();
+
+//        ResponseEntity<Stock> responseEntity = testRestTemplate.getForEntity("/stocks" + id, Stock.class);
+
+//        assertEquals("OK", responseEntity.getBody().getStatus());
+//        assertEquals("19/4/98", responseEntity.getBody().getDate());
+//        assertEquals("11/12/98", responseEntity.getBody().getDate_out());
+//        assertEquals(25000.25, responseEntity.getBody().getPrice(), 0.00);
+//        assertEquals(4000, responseEntity.getBody().getQuantity());
+        // ----------------------------------------------------------------------------------------------
+
+        assertEquals("OK", stocks.get().getStatus());
+        assertEquals("19/4/98", stocks.get().getDate());
+        assertEquals("11/12/98", stocks.get().getDate_out());
+        assertEquals(25000.25, stocks.get().getPrice(), 0.00);
+        assertEquals(4000, stocks.get().getQuantity());
+
+    }
+
+    // Find a size of All stock ( Expected : 3 )
+    @Test
+    public void getAllStock(){
         ArrayList<Stock> stocks = testRestTemplate.getForObject("/stocks", ArrayList.class);
+
         assertEquals(3, stocks.size());
     }
 
-    // New Stock test
+    // Create new Stock test
     @Test
     public void createNewStock(){
         Stock newStock = new Stock();
@@ -112,6 +115,7 @@ public class StockControllerTest {
     }
 
     // Delete Test
+    // delete the lastest id and count a size
     @Test
     public void deleteStock(){
         ArrayList<Stock> stocks = stockRepository.findAll();
@@ -121,7 +125,4 @@ public class StockControllerTest {
         stockRepository.delete(stock.get());
         assertEquals(2, stockRepository.count());
     }
-
-
-
 }
