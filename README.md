@@ -29,7 +29,12 @@
    - ```GET /product/{id}``` ~ แสดงสินค้างานจากไอดี<br>
    - ```PUT /product/{id}``` ~ แก้ไขข้อมูลสิค้าจากไอดี<br>
    - ```DELETE /product/{id}``` ~ ลบข้อมูลสินค้าจากไอดี<br>
-- Stock Service
+- [Stock Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/stock)
+   - ```POST /stocks``` ~ เพิ่มข้อมูลลงสต็อกสินค้า<br>
+   - ```GET /stocks``` ~ แสดงข้อมูลสต็อกสินค้าทั้งหมดในระบบ<br>
+   - ```GET /stocks/{id}``` ~ แสดงข้อมูลสต็อกสินค้าจากไอดี<br>
+   - ```PUT /stocks/{id}``` ~ แก้ไขข้อมูลสต็อกสินค้าจากไอดี<br>
+   - ```DELETE /stocks/{id}``` ~ ลบข้อมูลสต็อกสินค้าจากไอดี<br>
 - Bill Service
 
 ## Feature
