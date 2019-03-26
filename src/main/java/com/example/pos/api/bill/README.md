@@ -21,9 +21,6 @@
 * #### เรียกข้อมูลใบเสร็จทั้งหมด
   GET >> http://localhost:8080/bills
   
-* #### เรียกข้อมูลใบเสร็จจากไอดี
-  GET >> http://localhost:8080/bills/{id}
-  
   output:
   ```java
   [
@@ -43,13 +40,15 @@
 		"totalPrice":99.99,
 		"companyName":"companyName"
 	}
-]
+  ]
   ```
+* #### เรียกข้อมูลใบเสร็จจากไอดี
+  GET >> http://localhost:8080/bills/{id}
   
   output:
   ```java
   {
-  "id":1,
+        "id":1,
 	"date":"2019-03-01",
 	"productId":1,
 	"amount":1,
@@ -59,3 +58,7 @@
   ```
   
 * #### แก้ไขข้อมูลใบเสร็จ
+  PUT >> http://localhost:8080/bills/{id}
+
+  raw input:
+  
