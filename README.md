@@ -41,6 +41,8 @@
    - ```GET /bills/{id}``` ~ แสดงข้อมูลใบเสร็จสินค้าจากไอดี
    - ```PUT /bills/{id}``` ~ แก้ไขข้อมูลใบเสร็จสินค้าจากไอดี
    - ```DELETE /bills/{id}``` ~ ลบข้อมูลใบเสร็จสินค้าจากไอดี
+- [Report Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/report)
+   * `GET /reports` ~ แสดงข้อมูลรีพอร์ตทั้งหมดในระบบ 
 
 ## Feature
 -	สร้างบิล
