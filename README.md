@@ -35,7 +35,12 @@
    - ```GET /stocks/{id}``` ~ แสดงข้อมูลสต็อกสินค้าจากไอดี<br>
    - ```PUT /stocks/{id}``` ~ แก้ไขข้อมูลสต็อกสินค้าจากไอดี<br>
    - ```DELETE /stocks/{id}``` ~ ลบข้อมูลสต็อกสินค้าจากไอดี<br>
-- Bill Service
+- [Bill Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/bill)
+   - ```POST /bills``` ~ เพิ่มข้อมูลลงใบเสร็จสินค้า
+   - ```GET /bills``` ~ แสดงข้อมูลใบเสร็จสินค้าทั้งหมดในระบบ
+   - ```GET /bills/{id}``` ~ แสดงข้อมูลใบเสร็จสินค้าจากไอดี
+   - ```PUT /bills/{id}``` ~ แก้ไขข้อมูลใบเสร็จสินค้าจากไอดี
+   - ```DELETE /bills/{id}``` ~ ลบข้อมูลใบเสร็จสินค้าจากไอดี
 
 ## Feature
 -	สร้างบิล
