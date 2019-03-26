@@ -61,4 +61,17 @@
   PUT >> http://localhost:8080/bills/{id}
 
   raw input:
+  ```java
+  {
+        "id":1,
+	"date":"2019-03-01",
+	"productId":1,
+	"amount":5,
+	"totalPrice":185.9,
+	"companyName":"companyName"
+  }
+  ```
+  
+  * #### ลบใบเสร็จ
+    DELETE >> http://localhost:8080/bills/{id}
   
