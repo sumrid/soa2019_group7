@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/sumrid/soa2019_group7/tree/master.svg?style=svg)](https://circleci.com/gh/sumrid/soa2019_group7/tree/master)
 # Project POS System
 ระบบอช่วยอำนวยความสะดวกในการขายของตามร้านต่างๆ
 
