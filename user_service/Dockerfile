@@ -6,9 +6,9 @@
 FROM openjdk:8-jdk-alpine
 USER root
 COPY . .
-RUN ./gradlew clean build
+RUN mvnw clean package
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/build/libs/Bill-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "target\user_service.jar"]
 
 
 ############ clean build & run #############
