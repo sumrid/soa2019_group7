@@ -1,43 +1,55 @@
 version: 2
 jobs:
-    bill-service:
-        working_directory: ~/soa2019_group7/bill_service/
-        docker:
-            - image: circleci/openjdk:8-jdk
-        environment:
-            MAVEN_OPTS: -Xmx3200m
+  build-bill:
+    working_directory: ~/soa2019_group7/bill_service/
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout:
+          path: ~/soa2019_group7
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
+      - run :
+          name: Auth to gcloud
+          command: |
+            echo $GCLOUD_KEY | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${PROJECT_ID}
+            gcloud auth configure-docker
+      - run :
+          name: Build and push docker images
+          command: |
+            docker build -t asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
 
-        steps:
-
-            - checkout:
-                path: ~/soa2019_group7
-            - setup_remote_docker:
-                docker_layer_caching: true
-            - restore_cache:
-                keys:
-                    - v1-dependencies-{{ checksum "pom.xml" }}
-                    - v1-dependencies-
-            - run:
-                name: Build Docker Image
-                command: |
-                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                    docker build -t $DOCKER_USERNAME/bill_service .
-                    docker push $DOCKER_USERNAME/bill_service
-            - save_cache:
-                key: v1-dependencies-{{ checksum "pom.xml" }}
-                paths:
-                    - ~/.m2
-            - run:
-                name: run test
-                command: |
-                    mvnw test
-
+  build-report:
+    working_directory: ~/soa2019_group7/report_service
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout:
+          path: ~/soa2019_group7
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
+      - run :
+          name: Auth to gcloud
+          command: |
+            echo $GCLOUD_KEY | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${PROJECT_ID}
+            gcloud auth configure-docker
+      - run :
+          name: Build and push docker images
+          command: |
+            docker build -t asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
 workflows:
-    version: 2
-    complie:
-        jobs:
-            - bill-service:
-                filters:
-                    branches:
-                        only:
-                            - master
+  version: 2
+  workflow:
+    jobs:
+    - build-bill
+    - build-report
