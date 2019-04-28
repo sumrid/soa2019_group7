@@ -1,8 +1,9 @@
-package com.example.pos.Product;
+package com.project.product_service;
 
-import com.example.pos.api.product.model.Product;
-import com.example.pos.api.product.repository.ProductRepository;
-import com.example.pos.api.product.service.ProductService;
+
+import com.project.product_service.model.Product;
+import com.project.product_service.repository.ProductRepository;
+import com.project.product_service.service.ProductService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

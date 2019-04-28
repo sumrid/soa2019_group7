@@ -1,10 +1,11 @@
-package com.example.pos.Product;
+package com.project.product_service;
 
 
-import com.example.pos.api.product.controller.ProductController;
-import com.example.pos.api.product.model.Product;
-import com.example.pos.api.product.service.ProductService;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.product_service.controller.ProductController;
+import com.project.product_service.model.Product;
+import com.project.product_service.service.ProductService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

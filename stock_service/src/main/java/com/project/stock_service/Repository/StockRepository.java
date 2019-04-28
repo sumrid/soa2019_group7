@@ -1,6 +1,7 @@
-package com.example.pos.api.stock.Repository;
+package com.project.stock_service.Repository;
 
-import com.example.pos.api.stock.Model.Stock;
+
+import com.project.stock_service.Model.Stock;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

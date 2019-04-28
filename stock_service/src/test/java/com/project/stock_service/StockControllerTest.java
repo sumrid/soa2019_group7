@@ -1,6 +1,7 @@
-package com.example.pos.Stock;
-import com.example.pos.api.stock.Model.Stock;
-import com.example.pos.api.stock.Repository.StockRepository;
+package com.project.stock_service;
+
+import com.project.stock_service.Model.Stock;
+import com.project.stock_service.Repository.StockRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

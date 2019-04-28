@@ -1,7 +1,9 @@
-package com.example.pos.api.stock.Controller;
+package com.project.stock_service.Controller;
 
-import com.example.pos.api.stock.Model.Stock;
-import com.example.pos.api.stock.Service.StockService;
+
+
+import com.project.stock_service.Model.Stock;
+import com.project.stock_service.Service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

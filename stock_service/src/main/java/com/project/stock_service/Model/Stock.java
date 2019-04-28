@@ -1,4 +1,4 @@
-package com.example.pos.api.stock.Model;
+package com.project.stock_service.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

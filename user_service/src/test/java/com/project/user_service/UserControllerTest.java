@@ -1,10 +1,10 @@
-package com.example.pos.User;
+package com.project.user_service;
 
 
-import com.example.pos.api.user.controller.UserController;
-import com.example.pos.api.user.model.Employee;
-import com.example.pos.api.user.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.user_service.controller.UserController;
+import com.project.user_service.model.Employee;
+import com.project.user_service.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

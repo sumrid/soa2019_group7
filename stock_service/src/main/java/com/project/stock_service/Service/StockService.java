@@ -1,7 +1,8 @@
-package com.example.pos.api.stock.Service;
+package com.project.stock_service.Service;
 
-import com.example.pos.api.stock.Model.Stock;
-import com.example.pos.api.stock.Repository.StockRepository;
+
+import com.project.stock_service.Model.Stock;
+import com.project.stock_service.Repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
