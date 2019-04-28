@@ -1,34 +1,34 @@
 version: 2
 jobs:
     bill-service:
-    working_directory: ~/soa2019_group7/bill_service/
-    docker:
-        - image: circleci/openjdk:8-jdk
-    environment:
-        MAVEN_OPTS: -Xmx3200m
+        working_directory: ~/soa2019_group7/bill_service/
+        docker:
+            - image: circleci/openjdk:8-jdk
+        environment:
+            MAVEN_OPTS: -Xmx3200m
 
-    steps:
+        steps:
 
-        - checkout:
-            path: ~/soa2019_group7
-        - setup_remote_docker:
-            docker_layer_caching: true
-        - restore_cache:
-            keys:
-                - v1-dependencies-{{ checksum "pom.xml" }}
-                - v1-dependencies-
-        - run:
-            name: Build Docker Image
-            command: |
-                docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                docker build -t $DOCKER_USERNAME/bill_service .
-                docker push $DOCKER_USERNAME/bill_service
-        - save_cache:
-            paths:
-                key: v1-dependencies-{{ checksum "pom.xml" }}
-                path:
-                    - ~/.m2
-        - run: mvnw test
+            - checkout:
+                path: ~/soa2019_group7
+            - setup_remote_docker:
+                docker_layer_caching: true
+            - restore_cache:
+                keys:
+                    - v1-dependencies-{{ checksum "pom.xml" }}
+                    - v1-dependencies-
+            - run:
+                name: Build Docker Image
+                command: |
+                    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                    docker build -t $DOCKER_USERNAME/bill_service .
+                    docker push $DOCKER_USERNAME/bill_service
+            - save_cache:
+                paths:
+                    key: v1-dependencies-{{ checksum "pom.xml" }}
+                    path:
+                        - ~/.m2
+            - run: mvnw test
 
 workflows:
     version: 2
