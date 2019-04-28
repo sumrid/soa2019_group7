@@ -24,11 +24,13 @@ jobs:
                     docker build -t $DOCKER_USERNAME/bill_service .
                     docker push $DOCKER_USERNAME/bill_service
             - save_cache:
-                paths:
-                    key: v1-dependencies-{{ checksum "pom.xml" }}
-                    path:
-                        - ~/.m2
-            - run: mvnw test
+                key: v1-dependencies-{{ checksum "pom.xml" }}
+                path:
+                    - ~/.m2
+            - run:
+                name: run test
+                command: |
+                    mvnw test 
 
 workflows:
     version: 2
