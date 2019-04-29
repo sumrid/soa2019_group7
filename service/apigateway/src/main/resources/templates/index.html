@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Report Service</title>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">API Gateway</h1>
+            <p class="lead">For soa project</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Service</th>
+                <th scope="col">Methods</th>
+                <th scope="col">Description</th>
+                <th scope="col">Link</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!--bill service-->
+            <tr>
+                <th>bill</th>
+                <th>GET</th>
+                <td>All bills</td>
+                <td><a th:href="@{/api/bill/bills}">api/bill/bills</a></td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>GET</th>
+                <td>Get bill by id</td>
+                <td><a th:href="@{/api/bill/bills/1}">api/bill/bills/{id}</a></td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>GET</th>
+                <td>Get by date</td>
+                <td><a th:href="@{/api/bill/bills/date/today}">api/bill/bills/date/{date}</a></td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>GET</th>
+                <td>Get by username</td>
+                <td><a th:href="@{/api/bill/bills/name/sumrid}">api/bill/bills/name/{username}</a></td>
+            </tr>
+            <tr>
+                <th></th>
+                <th>GET</th>
+                <td>Get by company name</td>
+                <td><a th:href="@{/api/bill/bills/company/Inc.}">api/bill/bills/company/{company name}</a></td>
+            </tr>
+
+            <!--report service-->
+            <tr>
+                <th>report</th>
+                <th>GET</th>
+                <td>All reports</td>
+                <td><a th:href="@{/api/report/reports}">api/report/reports</a></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

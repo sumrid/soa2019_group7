@@ -10,6 +10,7 @@
 - ### test -- > `mvnw test`
   
 ## Deployment
+  - ### API gateway [http://35.240.205.11](http://35.240.205.11/)
   ```
   https://soa-group7-235616.appspot.com/ {EndPoint}
   ```
