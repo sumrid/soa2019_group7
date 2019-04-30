@@ -23,6 +23,7 @@ jobs:
           command: |
             # docker build -t asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM .
             # docker push asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
+            # kubectl set image deployment/bill bill=asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
 
   build-report:
     working_directory: ~/soa2019_group7/report_service
@@ -47,6 +48,7 @@ jobs:
           command: |
             # docker build -t asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM .
             # docker push asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
+            # kubectl set image deployment/report report=asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
 
   user-service:
       working_directory: ~/soa2019_group7/user_service
@@ -71,6 +73,7 @@ jobs:
             command: |
               # docker build -t asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM .
               # docker push asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM
+              # kubectl set image deployment/user user=asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM
 
   build-product:
     working_directory: ~/soa2019_group7/product_service
@@ -95,6 +98,7 @@ jobs:
           command: |
             docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
             docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
 workflows:
   version: 2
   workflow:
