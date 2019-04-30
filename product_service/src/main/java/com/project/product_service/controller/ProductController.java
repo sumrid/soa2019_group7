@@ -23,9 +23,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    private StorageService storageService;
-
+    private StorageService storageService = new StorageService();
 
     @GetMapping()
     public List<Product> getProduct() {
