@@ -17,6 +17,7 @@ jobs:
           command: |
             echo $GCLOUD_KEY | gcloud auth activate-service-account --key-file=-
             gcloud --quiet config set project ${PROJECT_ID}
+            gcloud container clusters get-credentials soa-service --zone asia-southeast1-b --project soa-group-7-174
             gcloud auth configure-docker
       - run :
           name: Build and push docker images
@@ -42,6 +43,7 @@ jobs:
           command: |
             echo $GCLOUD_KEY | gcloud auth activate-service-account --key-file=-
             gcloud --quiet config set project ${PROJECT_ID}
+            gcloud container clusters get-credentials soa-service --zone asia-southeast1-b --project soa-group-7-174
             gcloud auth configure-docker
       - run :
           name: Build and push docker images
@@ -67,6 +69,7 @@ jobs:
             command: |
               echo $GCLOUD_KEY | gcloud auth activate-service-account --key-file=-
               gcloud --quiet config set project ${PROJECT_ID}
+              gcloud container clusters get-credentials soa-service --zone asia-southeast1-b --project soa-group-7-174
               gcloud auth configure-docker
         - run :
             name: Build and push docker images
@@ -92,6 +95,7 @@ jobs:
           command: |
             echo $GCLOUD_KEY | gcloud auth activate-service-account --key-file=-
             gcloud --quiet config set project ${PROJECT_ID}
+            gcloud container clusters get-credentials soa-service --zone asia-southeast1-b --project soa-group-7-174
             gcloud auth configure-docker
       - run :
           name: Build and push docker images
