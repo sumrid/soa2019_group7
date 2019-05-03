@@ -1,6 +1,6 @@
-package com.sumrid_k.pos.Bill.repository;
+package com.sumrid_k.pos.Report.repository;
 
-import com.sumrid_k.pos.Bill.model.ProductQuantity;
+import com.sumrid_k.pos.Report.model.ProductQuantity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

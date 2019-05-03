@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,11 +23,14 @@ public class BillController {
     private BillService billService;
 
     @Autowired
+    private RestTemplate restTemplate;
+
+    @Autowired
     private Gson gson;
 
     @GetMapping("/")
     public String index() {
-        return "<h1>Hello, this is bill service</h1>";
+        return "<h1 align=\"center\">Hello, this is bill service</h1>";
     }
 
     @GetMapping("/bills")
@@ -42,29 +46,26 @@ public class BillController {
     }
 
     @PostMapping("/bills")
-    public ResponseEntity createBill(@RequestBody Bill bill){
-        billService.saveBill(bill);
-        return ResponseEntity.status(HttpStatus.CREATED).body(bill);
+    @HystrixCommand(fallbackMethod = "fallbackCreateBill")
+    public ResponseEntity createBill(@RequestBody Bill request){
+        restTemplate.postForEntity("http://report-service/save-bill", request, ResponseEntity.class);
+        return ResponseEntity.status(HttpStatus.CREATED).body(billService.saveBill(request));
     }
 
     @PutMapping("/bills/{id}")
-    public ResponseEntity updateBills(@PathVariable int id, @RequestBody Bill bill){
-        HttpStatus status;
-        if(billService.updateBill(id, bill)) {
-            status = HttpStatus.OK;
-        } else {
-            status = HttpStatus.NOT_FOUND;
+    public ResponseEntity updateBills(@PathVariable long id, @RequestBody Bill bill){
+        if(!billService.updateBill(id, bill)){
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.status(status).body(bill);
+        return ResponseEntity.ok(bill);
     }
 
     @DeleteMapping("/bills/{id}")
-    public ResponseEntity deleteBills(@PathVariable int id){
-        if(billService.deleteBill(id)) {
-            return new ResponseEntity("Bill is deleted successfully",HttpStatus.OK);
-        } else {
-            return new ResponseEntity("Deleted fail", HttpStatus.NOT_FOUND);
+    public ResponseEntity deleteBills(@PathVariable long id){
+        if(!billService.deleteBill(id)){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Deleted fail");
         }
+        return ResponseEntity.ok("Bill is deleted successfully");
     }
 
     @GetMapping("/bills/name/{name}")
@@ -123,5 +124,9 @@ public class BillController {
         bill.setCompanyName("Request fails.");
         bill.setUserName("Please try again.");
         return bill;
+    }
+
+    public ResponseEntity fallbackCreateBill(Bill bill) {
+        return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).body("Request fails. Please try again.");
     }
 }
