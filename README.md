@@ -58,3 +58,7 @@
 
 ## Flow
 ![Imgur](https://i.imgur.com/ta07pOC.png)
+
+## API Documents
+[![](https://img.shields.io/badge/swagger-api%20document-blue.svg)](https://app.swaggerhub.com/apis-docs/sumrid/posSystem/1.0.0#/)
+[![](https://img.shields.io/badge/github-wiki-yellowgreen.svg)](https://github.com/sumrid/soa2019_group7/wiki/API-Document)
