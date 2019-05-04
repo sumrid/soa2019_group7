@@ -15,6 +15,7 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: 'jacoco'
 
 group = 'com.sumrid_k.pos'
 version = '0.0.1-SNAPSHOT'
@@ -32,6 +33,13 @@ repositories {
 
 ext {
 	set('springCloudVersion', 'Greenwich.SR1')
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.enabled false
+	}
 }
 
 dependencies {

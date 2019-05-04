@@ -53,6 +53,7 @@ public class BillController {
     }
 
     @PutMapping("/bills/{id}")
+    @HystrixCommand(fallbackMethod = "fallbackUpdateBill")
     public ResponseEntity updateBills(@PathVariable long id, @RequestBody Bill bill){
         if(!billService.updateBill(id, bill)){
             return ResponseEntity.notFound().build();
@@ -61,6 +62,7 @@ public class BillController {
     }
 
     @DeleteMapping("/bills/{id}")
+    @HystrixCommand(fallbackMethod = "fallbackDeleteBill")
     public ResponseEntity deleteBills(@PathVariable long id){
         if(!billService.deleteBill(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Deleted fail");
@@ -69,16 +71,19 @@ public class BillController {
     }
 
     @GetMapping("/bills/name/{name}")
+    @HystrixCommand(fallbackMethod = "fallbackBills")
     public ArrayList<Bill> getByName(@PathVariable String name) {
         return billService.getByName(name);
     }
 
     @GetMapping("/bills/date/{date}")
+    @HystrixCommand(fallbackMethod = "fallbackBills")
     public ArrayList<Bill> getByDate(@PathVariable String date) {
         return billService.getByDate(date);
     }
 
     @GetMapping("/bills/company/{name}")
+    @HystrixCommand(fallbackMethod = "fallbackBills")
     public ArrayList<Bill> getByCompanyName(@PathVariable String name) {
         return billService.getByCompanyName(name);
     }
@@ -128,5 +133,13 @@ public class BillController {
 
     public ResponseEntity fallbackCreateBill(Bill bill) {
         return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).body("Request fails. Please try again.");
+    }
+
+    public ResponseEntity fallbackUpdateBill(long id, Bill bill) {
+        return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).body(bill);
+    }
+
+    public ResponseEntity fallbackDeleteBill(long id) {
+        return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).body("Request timeout. Please try again.");
     }
 }

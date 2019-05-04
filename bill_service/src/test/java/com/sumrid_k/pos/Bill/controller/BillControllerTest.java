@@ -56,6 +56,13 @@ public class BillControllerTest {
     }
 
     @Test
+    public void testIndex() {
+        String response = billController.index();
+
+        assertEquals("<h1 align=\"center\">Hello, this is bill service</h1>", response);
+    }
+
+    @Test
     public void testGetAllBillsSuccess() {
         when(billServiceMock.getAll()).thenReturn(billListMock);
 
@@ -143,5 +150,39 @@ public class BillControllerTest {
 
         assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
         assertEquals("Deleted fail", responseEntity.getBody());
+    }
+
+    @Test
+    public void testGetBillByUserName() {
+        ArrayList<Bill> request = new ArrayList<>();
+        request.add(billListMock.get(0));
+
+        when(billServiceMock.getByName(anyString())).thenReturn(request);
+
+        ArrayList<Bill> response = billController.getByName("sumrid");
+
+        assertEquals(1, response.size());
+        assertEquals("sumrid k", response.get(0).getUserName());
+    }
+
+    @Test
+    public void testGetByDate() {
+        when(billServiceMock.getByDate(anyString())).thenReturn(billListMock);
+
+        ArrayList<Bill> response = billController.getByDate("today");
+
+        assertEquals(2, response.size());
+    }
+
+    @Test
+    public void testGetByCompanyName() {
+        ArrayList<Bill> request = new ArrayList<>();
+        request.add(billListMock.get(1));
+
+        when(billServiceMock.getByCompanyName(anyString())).thenReturn(request);
+
+        ArrayList<Bill> response = billController.getByCompanyName("Barlow and Co");
+
+        assertEquals("Barlow and Co", response.get(0).getCompanyName());
     }
 }

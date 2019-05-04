@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/sumrid/Bill.svg?token=AQTAKJS8ztptGV6L7YzB&branch=master)](https://travis-ci.com/sumrid/Bill)
+[![codecov](https://codecov.io/gh/sumrid/Bill/branch/master/graph/badge.svg?token=Z44jbhE6Yz)](https://codecov.io/gh/sumrid/Bill)
 
 # Bill service
 
