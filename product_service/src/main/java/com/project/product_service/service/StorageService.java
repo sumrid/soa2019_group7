@@ -19,8 +19,7 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class StorageService {
 
-    @Value("${upload.path}")
-    private String uploadPath;
+    private String uploadPath = "./src/main/resources/product-image-upload";
 
     public String uploadFile(MultipartFile file) {
         if(file.isEmpty()) {

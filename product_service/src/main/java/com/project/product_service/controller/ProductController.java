@@ -64,7 +64,7 @@ public class ProductController {
     }
 
     @PostMapping("/upload-image")
-    public ResponseEntity<?> uploadImage(@RequestParam MultipartFile file) {
+    public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
         String filePath = storageService.uploadFile(file);
         return ResponseEntity.ok().body(filePath);
     }

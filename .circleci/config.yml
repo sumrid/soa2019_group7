@@ -22,7 +22,7 @@ jobs:
       - run :
           name: Build and push docker images
           command: |
-            ./gradlew clean build
+            # ./gradlew clean build
             # docker build -t asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM .
             # docker push asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
             # kubectl set image deployment/bill bill=asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
@@ -49,7 +49,7 @@ jobs:
       - run :
           name: Build and push docker images
           command: |
-            ./gradlew clean build
+            # ./gradlew clean build
             # docker build -t asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM .
             # docker push asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
             # kubectl set image deployment/report report=asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
@@ -102,9 +102,9 @@ jobs:
       - run :
           name: Build and push docker images
           command: |
-            # docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
-            # docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
-            # kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
 
   build-stock:
     working_directory: ~/soa2019_group7/stock_service
