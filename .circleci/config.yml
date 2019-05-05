@@ -139,5 +139,5 @@ workflows:
     # - user-service
     # - build-bill
     # - build-report
-    - build-product
+    # - build-product
     - build-stock
