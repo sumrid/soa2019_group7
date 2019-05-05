@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -71,10 +72,10 @@ public class ProductController {
     }
 
     @PostMapping("/upload-image")
-    @HystrixCommand(fallbackMethod = "fallbackUploadImage")
-    public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
-        String filePath = storageService.uploadFile(file);
-        return ResponseEntity.ok().body(filePath);
+//    @HystrixCommand(fallbackMethod = "fallbackUploadImage")
+    public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) throws IOException {
+        String fileName = storageService.uploadFile(file);
+        return ResponseEntity.ok().body(fileName);
     }
 
     @GetMapping("/image/{id}")
