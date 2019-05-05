@@ -21,7 +21,7 @@ public class ProductQuantityTest {
         assertEquals("lenovo", productQuantity.getName());
         assertEquals(1, productQuantity.getQuantity());
         assertEquals(1, productQuantity.getId());
-        assertEquals(456.2, productQuantity.getPrice());
+        assertEquals(456.2, productQuantity.getPrice(),0.01);
         assertEquals(1L, productQuantity.getProductId());
 
     }
@@ -32,7 +32,7 @@ public class ProductQuantityTest {
 
         assertEquals("lenovo", productQuantity.getName());
         assertEquals(1, productQuantity.getQuantity());
-        assertEquals(456.2, productQuantity.getPrice());
+        assertEquals(456.2, productQuantity.getPrice(),0.01);
         assertEquals(1L, productQuantity.getProductId());
     }
 }

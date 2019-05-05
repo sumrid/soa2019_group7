@@ -54,33 +54,23 @@ public class BillRepositoryTest {
         corsair.setQuantity(50);
         corsair.setImg("www.test.com/test.png");
 
-        List<ProductQuantity> list1 = new ArrayList<>();
-        List<ProductQuantity> list2 = new ArrayList<>();
-        List<ProductQuantity> list3 = new ArrayList<>();
-        list1.add(new ProductQuantity(gson.toJson(dell), 2));
-        list2.add(new ProductQuantity(gson.toJson(acer), 1));
-        list3.add(new ProductQuantity(gson.toJson(dell), 1));
-        list3.add(new ProductQuantity(gson.toJson(corsair), 1));
 
         Bill bill1 = new Bill();
         bill1.setDate(date);
         bill1.setUserName("William Walker");
         bill1.setCompanyName("Butterscotch Corp");
-        bill1.setProductQuantities(list1);
         bill1.setTotalPrice(73000);
 
         Bill bill2 = new Bill();
         bill2.setDate(date);
         bill2.setUserName("Mylee Turnbull");
         bill2.setCompanyName("Grimm's Fairy Sales");
-        bill2.setProductQuantities(list2);
         bill2.setTotalPrice(3990);
 
         Bill bill3 = new Bill();
         bill3.setDate(date);
         bill3.setUserName("WAbdur Bowler");
         bill3.setCompanyName("Blind Decorate");
-        bill3.setProductQuantities(list3);
         bill3.setTotalPrice(37290);
 
         entityManager.persist(bill1);

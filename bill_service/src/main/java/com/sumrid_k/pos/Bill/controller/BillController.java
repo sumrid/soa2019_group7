@@ -5,6 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.sumrid_k.pos.Bill.model.Bill;
 import com.sumrid_k.pos.Bill.model.Product;
 import com.sumrid_k.pos.Bill.model.ProductQuantity;
+import com.sumrid_k.pos.Bill.model.Stock;
 import com.sumrid_k.pos.Bill.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,8 +51,13 @@ public class BillController {
     public ResponseEntity createBill(@RequestBody Bill request){
         restTemplate.postForEntity("http://report-service/bill/save", request, ResponseEntity.class);
         for(ProductQuantity q : request.getProductQuantities()){
-
-            restTemplate.postForEntity("http://stock-service/stocks", q, ResponseEntity.class);
+            Stock stock = new Stock();
+            stock.setDate(request.getDate());
+            stock.setName(q.getName());
+            stock.setPrice(q.getPrice());
+            stock.setProductId(q.getProductId());
+            stock.setQuantity(q.getQuantity()*(-1));
+            restTemplate.postForObject("http://stock-service/stocks", stock, Stock.class);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(billService.saveBill(request));
     }

@@ -1,6 +1,7 @@
 package com.sumrid_k.pos.Bill.controller;
 
 import com.sumrid_k.pos.Bill.model.Bill;
+import com.sumrid_k.pos.Bill.model.ProductQuantity;
 import com.sumrid_k.pos.Bill.service.BillService;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +34,7 @@ public class BillControllerTest {
     private BillController billController;
 
     private ArrayList<Bill> billListMock;
+    private ArrayList<ProductQuantity> productQuantitiesMock;
 
     @Before
     public void setUp() {
@@ -91,6 +93,7 @@ public class BillControllerTest {
         request.setTotalPrice(200.99);
         request.setCompanyName("company Inc.");
         request.setUserName("Rora Back");
+        request.setProductQuantities(productQuantitiesMock = new ArrayList<>());
         ResponseEntity responseEntityExpected = ResponseEntity.status(HttpStatus.CREATED).body(request);
 
         when(billServiceMock.saveBill(any(Bill.class))).thenReturn(request);

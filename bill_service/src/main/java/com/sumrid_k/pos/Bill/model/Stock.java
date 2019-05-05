@@ -9,11 +9,11 @@ public class Stock {
     private Date date;
     private int quantity;
     private double price;
-    private int productId;
+    private Long productId;
 
     public Stock(){}
 
-    public Stock(int id, String name, Date date, int quantity, double price, int productId) {
+    public Stock(int id, String name, Date date, int quantity, double price, Long productId) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -22,11 +22,11 @@ public class Stock {
         this.productId = productId;
     }
 
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
