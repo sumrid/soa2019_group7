@@ -5,11 +5,11 @@
 ระบบอช่วยอำนวยความสะดวกในการขายของตามร้านต่างๆ
 
 ## How to Build & Run
-- ### complie -- > `mvnw clean package`
+- ### complie -- > `mvnw clean package` `gradlew build`
 
-- ### run project -- > `mvnw spring-boot:run`
+- ### run project -- > `mvnw spring-boot:run` `gradlew bootrun`
 
-- ### test -- > `mvnw test`
+- ### test -- > `mvnw test` `gradlew test`
   
 ## Deployment
   - ### API gateway [http://35.240.205.11](http://35.240.205.11/)
