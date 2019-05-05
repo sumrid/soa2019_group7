@@ -128,16 +128,16 @@ jobs:
       - run :
           name: Build and push docker images
           command: |
-            # docker build -t asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM .
-            # docker push asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
-            # kubectl set image deployment/stock stock=asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
+            docker build -t asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
+            kubectl set image deployment/stock stock=asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
 
 workflows:
   version: 2
   workflow:
     jobs:
+    # - user-service
     # - build-bill
     # - build-report
     - build-product
-    # - user-service
-    # - build-stock
+    - build-stock
