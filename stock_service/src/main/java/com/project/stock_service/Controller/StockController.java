@@ -68,11 +68,12 @@ public class StockController {
         }
     }
 
+
+
     public ArrayList<Stock> fallbackGetStocks() {
         ArrayList<Stock> stocks = new ArrayList<>();
         Stock stock = new Stock();
         stock.setName("Request fails.");
-        stock.setStatus("Please try again.");
         stocks.add(stock);
         return stocks;
     }

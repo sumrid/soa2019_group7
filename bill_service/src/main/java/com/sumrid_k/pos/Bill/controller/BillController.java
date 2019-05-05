@@ -48,7 +48,11 @@ public class BillController {
     @PostMapping("/bills")
     @HystrixCommand(fallbackMethod = "fallbackCreateBill")
     public ResponseEntity createBill(@RequestBody Bill request){
-        restTemplate.postForEntity("http://report-service/save-bill", request, ResponseEntity.class);
+        restTemplate.postForEntity("http://report-service/bill/save", request, ResponseEntity.class);
+        for(ProductQuantity q : request.getProductQuantities()){
+
+            restTemplate.postForEntity("http://stock-service/stocks", q, ResponseEntity.class);
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(billService.saveBill(request));
     }
 
@@ -98,7 +102,7 @@ public class BillController {
         p1.setImg("www.test.com/test.png");
 
         List<ProductQuantity> productQuantities = new ArrayList<>();
-        productQuantities.add(new ProductQuantity(gson.toJson(p1),1));
+        // productQuantities.add(new ProductQuantity(gson.toJson(p1),1));
 
         Bill bill = new Bill();
         bill.setDate(new Date());

@@ -1,16 +1,11 @@
-package com.project.stock_service.Model;
+package com.sumrid_k.pos.Bill.model;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
 public class Stock {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    @Temporal(TemporalType.DATE)
     private Date date;
     private int quantity;
     private double price;

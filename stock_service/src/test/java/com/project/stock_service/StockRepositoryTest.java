@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,11 +33,9 @@ public class StockRepositoryTest {
     @Before
     public void initData(){
         data1 = new Stock();
-        data1.setDate_in("19/4/98");
-        data1.setDate_out("11/12/98");
+        data1.setDate(new Date());
         data1.setName("Apple Jumkad");
         data1.setPrice(25000.25);
-        data1.setStatus("OK");
         data1.setQuantity(4000);
         data1.setProductId(12907);
 
