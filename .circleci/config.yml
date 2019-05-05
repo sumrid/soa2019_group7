@@ -136,8 +136,8 @@ workflows:
   version: 2
   workflow:
     jobs:
-    - build-bill
-    - build-report
+    # - build-bill
+    # - build-report
     - build-product
-    - user-service
-    - build-stock
+    # - user-service
+    # - build-stock
