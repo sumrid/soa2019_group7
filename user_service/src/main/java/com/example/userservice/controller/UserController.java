@@ -1,7 +1,12 @@
 package com.example.userservice.controller;
 
+import com.example.userservice.exception.AppException;
+import com.example.userservice.model.Role;
+import com.example.userservice.model.RoleName;
+import com.example.userservice.model.User;
 import com.example.userservice.payload.UserIdentityAvailability;
 import com.example.userservice.payload.UserSummary;
+import com.example.userservice.repository.RoleRepository;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.security.CurrentUser;
 import com.example.userservice.security.UserPrincipal;
@@ -14,12 +19,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -31,6 +42,17 @@ public class UserController {
         UserSummary userSummary = new UserSummary(currentUser.getId(), currentUser.getUsername(), currentUser.getName()
         , currentUser.getAuthorities().toString());
         return userSummary;
+    }
+
+    @GetMapping("/users/all")
+    public List<User> getAllUser() {
+        Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+                .orElseThrow(() -> new AppException("Role not set."));
+        List<User> allUser = userRepository.findAll();
+        List<User> result = allUser.stream().filter(c -> c.getRoles().contains(userRole))
+                .collect(Collectors.toList());
+
+        return result;
     }
 
     @GetMapping("/user/checkUsernameAvailability")
