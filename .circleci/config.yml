@@ -112,7 +112,7 @@ jobs:
             # bash <(curl -s https://codecov.io/bash)
             docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
             docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
-            kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            # kubectl set image deploymsent/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
 
   build-stock:
     working_directory: ~/soa2019_group7/stock_service

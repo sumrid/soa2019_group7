@@ -87,7 +87,7 @@ public class StorageService {
     private Credentials credentials = null;
     {
         try {
-            credentials = GoogleCredentials.fromStream(new FileInputStream("./src/main/resources/cloud.json"));
+            credentials = GoogleCredentials.fromStream(new FileInputStream("/src/main/resources/cloud.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
