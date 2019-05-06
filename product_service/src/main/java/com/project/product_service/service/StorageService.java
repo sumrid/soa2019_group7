@@ -110,7 +110,7 @@ public class StorageService {
                 .setAcl(new ArrayList<>(Arrays.asList(Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER)))).build(),
                 file.getInputStream());
 
-        return blobInfo.getName();
+        return blobInfo.getMediaLink();
     }
 
     public ResponseEntity loadFile(String fileName, HttpServletRequest request) {

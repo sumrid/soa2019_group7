@@ -181,8 +181,8 @@ workflows:
   workflow:
     jobs:
       # - user-service
-      - build-bill
-      # - build-report
+      # - build-bill
+      - build-report
       # - build-product
       # - build-stock
       # - build-web
