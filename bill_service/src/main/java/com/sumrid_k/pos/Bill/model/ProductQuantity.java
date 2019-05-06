@@ -1,7 +1,5 @@
 package com.sumrid_k.pos.Bill.model;
 
-import com.google.gson.Gson;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

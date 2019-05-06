@@ -23,9 +23,9 @@ jobs:
           name: Build and push docker images
           command: |
             ./gradlew clean build
-            # docker build -t asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM .
-            # docker push asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
-            # kubectl set image deployment/bill bill=asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
+            docker build -t asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
+            kubectl set image deployment/bill bill=asia.gcr.io/soa-group-7-174/bill:$CIRCLE_BUILD_NUM
 
   build-report:
     working_directory: ~/soa2019_group7/report_service
@@ -181,9 +181,9 @@ workflows:
   workflow:
     jobs:
       # - user-service
-      # - build-bill
+      - build-bill
       # - build-report
-      - build-product
+      # - build-product
       # - build-stock
       # - build-web
       # - deploy-web:
