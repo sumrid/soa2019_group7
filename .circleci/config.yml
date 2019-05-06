@@ -107,7 +107,7 @@ jobs:
       - run :
           name: Build and push docker images
           command: |
-            # ./mvnw clean package
+            ./mvnw clean package
             # ./mvnw cobertura:cobertura
             # bash <(curl -s https://codecov.io/bash)
             docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
@@ -197,7 +197,7 @@ workflows:
     jobs:
       # - user-service
       # - build-bill
-      - build-report
+      # - build-report
       - build-product
       # - build-stock
       # - build-web
