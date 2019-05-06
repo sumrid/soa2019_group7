@@ -28,10 +28,6 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    private RestTemplate restTemplate;
-
-
 
     private StorageService storageService = new StorageService();
 
