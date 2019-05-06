@@ -180,11 +180,11 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - user-service
+      # - user-service
       # - build-bill
       # - build-report
-      # - build-product
-      - build-stock
+      - build-product
+      # - build-stock
       # - build-web
       # - deploy-web:
       #     requires:
