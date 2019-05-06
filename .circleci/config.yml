@@ -65,7 +65,7 @@ jobs:
             docker_layer_caching: true
         - run:
             name: chmod permissions
-            command: chmod +x ./mvnw
+            command: chmod +x ./gradlew
         - run :
             name: Auth to gcloud
             command: |
@@ -76,9 +76,10 @@ jobs:
         - run :
             name: Build and push docker images
             command: |
-              # docker build -t asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM .
-              # docker push asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM
-              # kubectl set image deployment/user user=asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM
+              ./gradlew clean build
+              docker build -t asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM .
+              docker push asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM
+              kubectl set image deployment/user user=asia.gcr.io/soa-group-7-174/user:$CIRCLE_BUILD_NUM
 
   build-product:
     working_directory: ~/soa2019_group7/product_service
@@ -177,13 +178,13 @@ workflows:
   version: 2
   workflow:
     jobs:
-    # - user-service
-      - build-bill
-      - build-report
-      - build-product
+      - user-service
+      # - build-bill
+      # - build-report
+      # - build-product
       - build-stock
-      - build-web
-      - deploy-web:
-          requires:
-            - build-web
+      # - build-web
+      # - deploy-web:
+      #     requires:
+      #       - build-web
 
