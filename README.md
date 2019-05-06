@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/sumrid/soa2019_group7/tree/master.svg?style=svg)](https://circleci.com/gh/sumrid/soa2019_group7/tree/master)
+[![codecov](https://codecov.io/gh/sumrid/soa2019_group7/branch/master/graph/badge.svg)](https://codecov.io/gh/sumrid/soa2019_group7)
 ![java](https://img.shields.io/static/v1.svg?label=made%20with&message=java&color=orange&logo=java&style=flat)
 ![google](https://img.shields.io/static/v1.svg?label=deployed&message=cloud%20platform&color=4285f4&logo=google&style=flat&logoColor=white)
 # Project POS System
