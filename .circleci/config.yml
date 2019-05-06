@@ -110,9 +110,9 @@ jobs:
             ./mvnw clean package
             ./mvnw cobertura:cobertura
             bash <(curl -s https://codecov.io/bash)
-            # docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
-            # docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
-            # kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
 
   build-stock:
     working_directory: ~/soa2019_group7/stock_service
@@ -196,10 +196,10 @@ workflows:
   workflow:
     jobs:
       # - user-service
-      - build-bill
-      - build-report
+      # - build-bill
+      # - build-report
       - build-product
-      - build-stock
+      # - build-stock
       # - build-web
       # - deploy-web:
       #     requires:
