@@ -103,9 +103,14 @@ jobs:
       - run :
           name: Build and push docker images
           command: |
-            docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
-            docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
-            kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            ./mvnw clean package
+            ./mvnw cobertura:cobertura
+            # docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
+            # docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            # kubectl set image deployment/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+      - run:
+          name: Update codecov result
+          command: bash <(curl -s https://codecov.io/bash)
 
   build-stock:
     working_directory: ~/soa2019_group7/stock_service
@@ -189,8 +194,8 @@ workflows:
       # - user-service
       # - build-bill
       # - build-report
-      # - build-product
-      - build-stock
+      - build-product
+      # - build-stock
       # - build-web
       # - deploy-web:
       #     requires:
