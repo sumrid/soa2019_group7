@@ -4,12 +4,14 @@ package com.project.product_service.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.project.product_service.model.Product;
+import com.project.product_service.model.Stock;
 import com.project.product_service.service.ProductService;
 import com.project.product_service.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +27,11 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+
 
     private StorageService storageService = new StorageService();
 
@@ -85,6 +92,24 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
         return storageService.loadFile(product.get().getImg(), request);
+    }
+
+    @PostMapping("/quantity")
+    @HystrixCommand(fallbackMethod = "fallbackCreateProduct")
+    public ResponseEntity<?> postQuantity(@Valid @RequestBody Stock stock) {
+        long id = stock.getProductId();
+        Optional<Product> retrieveProduct = productService.retrieveProduct(id);
+        if(retrieveProduct.isPresent()) {
+            Product product = retrieveProduct.get();
+            int quantity = product.getQuantity();
+            int different = stock.getQuantity();
+            quantity = quantity + different;
+            product.setQuantity(quantity);
+            productService.updateProduct(id,product);
+        }
+
+
+        return ResponseEntity.ok().build();
     }
 
     public List<Product> fallbackGetAll() {

@@ -6,31 +6,37 @@ package com.project.stock_service.Model;
 public class ProductQuantity {
     private long id;
 
-    private String productJson;
+    private String name;
+    private double price;
     private int quantity;
+    private long productId;
 
     public ProductQuantity() {
     }
-
-    public ProductQuantity(String productJson, int quantity) {
-        this.productJson = productJson;
+    public ProductQuantity(String name, int quantity, double price, long productId) {
+        this.name = name;
         this.quantity = quantity;
+        this.price = price;
+        this.productId = productId;
     }
-
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    public String getProductJson() {
-        return productJson;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setProductJson(String productJson) {
-        this.productJson = productJson;
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getQuantity() {
@@ -41,4 +47,22 @@ public class ProductQuantity {
         this.quantity = quantity;
     }
 
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
+
+
 }
+
+
+

@@ -26,8 +26,7 @@ public class BillController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    private Gson gson;
+
 
     @GetMapping("/")
     public String index() {

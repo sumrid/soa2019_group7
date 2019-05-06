@@ -19,6 +19,9 @@ public class StockController {
     @Autowired
     StockService stockService;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     // Get all stock
     @GetMapping("/stocks")
     @HystrixCommand(fallbackMethod = "fallbackGetStocks")
@@ -40,7 +43,8 @@ public class StockController {
     @PostMapping("/stocks")
     @HystrixCommand(fallbackMethod = "fallbackCreateStock")
     public ResponseEntity createStock(@RequestBody Stock stock){
-        stockService.saveStock(stock);
+            stockService.saveStock(stock);
+            restTemplate.postForObject("http://product-service/quantity", stock, Stock.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(stock);
     }
 
