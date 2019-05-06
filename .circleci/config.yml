@@ -136,7 +136,8 @@ jobs:
       - run:
           name: Run codecov
           command: |
-            ./mvnw cobertura:cobertura
+            ./mvnw clean package
+            ./mvnw jacoco:report
             bash <(curl -s https://codecov.io/bash)
       - run :
           name: Build and push docker images
@@ -144,9 +145,6 @@ jobs:
             # docker build -t asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM .
             # docker push asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
             # kubectl set image deployment/stock stock=asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
-      - run:
-          name: Update codecov result
-          command: bash <(curl -s https://codecov.io/bash)
 
   build-web:
     working_directory: ~/soa2019_group7/web
@@ -198,8 +196,8 @@ workflows:
       # - user-service
       # - build-bill
       # - build-report
-      - build-product
-      # - build-stock
+      # - build-product
+      - build-stock
       # - build-web
       # - deploy-web:
       #     requires:
