@@ -90,6 +90,11 @@ public class ProductController {
         return storageService.loadFile(product.get().getImg(), request);
     }
 
+    @GetMapping("/image-name/{imagename}")
+    public ResponseEntity getImageByImageName(@PathVariable String imagename, HttpServletRequest request) {
+        return storageService.loadFile(imagename, request);
+    }
+
     @PostMapping("/quantity")
     @HystrixCommand(fallbackMethod = "fallbackCreateProduct")
     public ResponseEntity<?> postQuantity(@Valid @RequestBody Stock stock) {
