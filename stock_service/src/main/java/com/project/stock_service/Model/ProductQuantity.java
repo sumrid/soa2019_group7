@@ -1,8 +1,5 @@
 package com.project.stock_service.Model;
 
-
-
-
 public class ProductQuantity {
     private long id;
 
