@@ -4,4 +4,4 @@ USER root
 COPY /target/product_service.jar product.jar
 #RUN ./mvnw clean package
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "product_service.jar"]
+ENTRYPOINT ["java", "-jar", "product.jar"]
