@@ -1,8 +1,6 @@
-export const API_BASE_URL = 'http://35.240.205.11/api';
+export const API_BASE_URL = 'http://localhost:5000/api';
 export const API_PRODUCT_URL = 'http://35.240.205.11/api/product/product';
-export const API_USER_URL = 'http://35.240.205.11/api/user/api';
-
-export const API_AUTH_URL = 'http://35.240.205.11/api/user/api';
+export const API_USER_URL = 'http://localhost:5000/api/user';
 export const API_REPORT_URL ='http://35.240.205.11/api/report/reports';
 
 export const ACCESS_TOKEN = 'accessToken';

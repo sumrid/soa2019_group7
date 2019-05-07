@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_PRODUCT_URL, API_USER_URL, POLL_LIST_SIZE, ACCESS_TOKEN } from '../constants';
+import { API_BASE_URL, API_PRODUCT_URL, POLL_LIST_SIZE, ACCESS_TOKEN } from '../constants';
 
 const request = (options) => {
     const headers = new Headers({
@@ -42,7 +42,7 @@ export function deleteProduct(productCurrent) {
 
 export function login(loginRequest) {
     return request({
-        url: API_USER_URL + "/auth/signin",
+        url: API_BASE_URL + "/auth/signin",
         method: 'POST',
         body: JSON.stringify(loginRequest)
     });
@@ -50,7 +50,7 @@ export function login(loginRequest) {
 
 export function signup(signupRequest) {
     return request({
-        url: API_USER_URL + "/auth/signup",
+        url: API_BASE_URL + "/auth/signup",
         method: 'POST',
         body: JSON.stringify(signupRequest)
     });
@@ -65,14 +65,14 @@ export function deleteUser(productCurrent) {
 
 export function checkUsernameAvailability(username) {
     return request({
-        url: API_USER_URL + "/user/checkUsernameAvailability?username=" + username,
+        url: API_BASE_URL + "/user/checkUsernameAvailability?username=" + username,
         method: 'GET'
     });
 }
 
 export function checkEmailAvailability(email) {
     return request({
-        url: API_USER_URL + "/user/checkEmailAvailability?email=" + email,
+        url: API_BASE_URL + "/user/checkEmailAvailability?email=" + email,
         method: 'GET'
     });
 }
@@ -84,7 +84,7 @@ export function getCurrentUser() {
     }
 
     return request({
-        url: API_USER_URL + "/user/me",
+        url: API_BASE_URL + "/user/me",
         method: 'GET'
     });
 }
