@@ -97,7 +97,7 @@ public class BillControllerTest {
         ResponseEntity responseEntityExpected = ResponseEntity.status(HttpStatus.CREATED).body(request);
 
         when(billServiceMock.saveBill(any(Bill.class))).thenReturn(request);
-        when(restTemplateMock.postForEntity(anyString(), any(Bill.class), eq(ResponseEntity.class)))
+        when(restTemplateMock.postForEntity(anyString(), any(Bill.class), eq(Bill.class)))
                 .thenReturn(responseEntityExpected);
 
         ResponseEntity responseEntity = billController.createBill(request);
