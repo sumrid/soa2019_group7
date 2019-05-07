@@ -5,6 +5,8 @@
 # Project POS System
 ระบบอช่วยอำนวยความสะดวกในการขายของตามร้านต่างๆ
 
+สวัสดีครับ
+
 ## How to Build & Run
 - ### complie -- > `mvnw clean package` `gradlew build`
 
