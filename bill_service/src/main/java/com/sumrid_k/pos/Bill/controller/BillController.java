@@ -48,8 +48,8 @@ public class BillController {
     }
 
     @PostMapping("/bills")
-    @HystrixCommand(fallbackMethod = "fallbackCreateBill",
-            commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")})
+//    @HystrixCommand(fallbackMethod = "fallbackCreateBill",
+//            commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")})
     public ResponseEntity createBill(@RequestBody Bill request){
         restTemplate.postForEntity("http://report-service/bill/save", request, ResponseEntity.class);
         for(ProductQuantity q : request.getProductQuantities()){
