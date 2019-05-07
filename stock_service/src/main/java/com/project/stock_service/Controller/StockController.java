@@ -41,7 +41,7 @@ public class StockController {
 
     // New Stock
     @PostMapping("/stocks")
-    @HystrixCommand(fallbackMethod = "fallbackCreateStock")
+//    @HystrixCommand(fallbackMethod = "fallbackCreateStock")
     public ResponseEntity createStock(@RequestBody Stock stock){
             stockService.saveStock(stock);
             restTemplate.postForObject("http://product-service/quantity", stock, Stock.class);
