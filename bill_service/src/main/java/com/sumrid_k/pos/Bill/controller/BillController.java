@@ -51,7 +51,7 @@ public class BillController {
 //    @HystrixCommand(fallbackMethod = "fallbackCreateBill",
 //            commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")})
     public ResponseEntity createBill(@RequestBody Bill request){
-        restTemplate.postForEntity("http://report-service/bill/save", request, ResponseEntity.class);
+        restTemplate.postForEntity("http://report-service/bill/save", request, Bill.class);
         for(ProductQuantity q : request.getProductQuantities()){
             Stock stock = new Stock();
             stock.setDate(request.getDate());

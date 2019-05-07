@@ -173,10 +173,10 @@ workflows:
   workflow:
     jobs:
       # - user-service
-      # - build-bill
+      - build-bill
       # - build-report
       # - build-product
-      - build-stock
+      # - build-stock
       # - build-web
       # - deploy-web
 
