@@ -175,8 +175,8 @@ workflows:
       # - user-service
       # - build-bill
       # - build-report
-      - build-product
-      # - build-stock
+      # - build-product
+      - build-stock
       # - build-web
       # - deploy-web
 
