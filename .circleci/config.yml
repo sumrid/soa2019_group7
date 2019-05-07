@@ -54,9 +54,9 @@ jobs:
             ./gradlew clean build
             ./gradlew jacocoTestReport
             bash <(curl -s https://codecov.io/bash)
-            # docker build -t asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM .
-            # docker push asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
-            # kubectl set image deployment/report report=asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
+            docker build -t asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
+            kubectl set image deployment/report report=asia.gcr.io/soa-group-7-174/report:$CIRCLE_BUILD_NUM
 
   user-service:
       working_directory: ~/soa2019_group7/user_service
@@ -173,10 +173,10 @@ workflows:
   workflow:
     jobs:
       # - user-service
-      #- build-bill
-      #- build-report
+      - build-bill
+      - build-report
       # - build-product
-      #- build-stock
+      - build-stock
       # - build-web
-      - deploy-web
+      # - deploy-web
 
