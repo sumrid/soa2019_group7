@@ -96,7 +96,7 @@ public class ProductController {
     }
 
     @PostMapping("/quantity")
-    @HystrixCommand(fallbackMethod = "fallbackCreateProduct")
+//    @HystrixCommand(fallbackMethod = "fallbackCreateProduct")
     public ResponseEntity<?> postQuantity(@Valid @RequestBody Stock stock) {
         long id = stock.getProductId();
         Optional<Product> retrieveProduct = productService.retrieveProduct(id);

@@ -109,7 +109,7 @@ jobs:
           command: |
             docker build -t asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM .
             docker push asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
-            # kubectl set image deploymsent/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
+            kubectl set image deploymsent/product product=asia.gcr.io/soa-group-7-174/product:$CIRCLE_BUILD_NUM
 
   build-stock:
     working_directory: ~/soa2019_group7/stock_service
@@ -130,18 +130,18 @@ jobs:
             gcloud --quiet config set project ${PROJECT_ID}
             gcloud container clusters get-credentials soa-service --zone asia-southeast1-b --project soa-group-7-174
             gcloud auth configure-docker
-      - run:
-          name: Run codecov
-          command: |
-            ./mvnw clean package
-            ./mvnw jacoco:report
-            bash <(curl -s https://codecov.io/bash)
+      # - run:
+      #     name: Run codecov
+      #     command: |
+      #       ./mvnw clean package
+      #       ./mvnw jacoco:report
+      #       bash <(curl -s https://codecov.io/bash)
       - run :
           name: Build and push docker images
           command: |
-            # docker build -t asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM .
-            # docker push asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
-            # kubectl set image deployment/stock stock=asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
+            docker build -t asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM .
+            docker push asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
+            kubectl set image deployment/stock stock=asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
 
 
   deploy-web:
@@ -173,9 +173,9 @@ workflows:
   workflow:
     jobs:
       # - user-service
-      - build-bill
+      # - build-bill
       # - build-report
-      # - build-product
+      - build-product
       # - build-stock
       # - build-web
       # - deploy-web
