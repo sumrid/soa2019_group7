@@ -1,18 +1,21 @@
-############ it work ###############
-# FROM node:8 as react-build
-# WORKDIR /app
-# COPY . ./
-# RUN yarn
-# RUN yarn build
+FROM node:10
 
-# FROM nginx:alpine
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
-# COPY --from=react-build /app/build /usr/share/nginx/html
-# EXPOSE 80
-# CMD ["nginx", "-g", "daemon off;"]
+# Create app directory
+WORKDIR /usr/src/app
 
-########## it work 2 #############
-FROM nginx:alpine
-COPY /build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
+# At this point we just have the package.json files
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Run any other build steps such as `npm run build`
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]

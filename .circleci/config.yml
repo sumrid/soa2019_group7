@@ -143,24 +143,6 @@ jobs:
             # docker push asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
             # kubectl set image deployment/stock stock=asia.gcr.io/soa-group-7-174/stock:$CIRCLE_BUILD_NUM
 
-  build-web:
-    working_directory: ~/soa2019_group7/web
-    docker:
-      - image: circleci/node:10
-    steps:
-      - checkout:
-          path: ~/soa2019_group7
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run:
-          name: build web
-          command: 
-            npm install
-            yarn build
-      - store_test_results:
-          path: test-results
 
   deploy-web:
     working_directory: ~/soa2019_group7/web
@@ -191,12 +173,10 @@ workflows:
   workflow:
     jobs:
       # - user-service
-      - build-bill
-      - build-report
+      #- build-bill
+      #- build-report
       # - build-product
-      - build-stock
+      #- build-stock
       # - build-web
-      # - deploy-web:
-      #     requires:
-      #       - build-web
+      - deploy-web
 
