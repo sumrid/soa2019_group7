@@ -1,6 +1,7 @@
 [![CircleCI](https://circleci.com/gh/sumrid/soa2019_group7/tree/master.svg?style=svg)](https://circleci.com/gh/sumrid/soa2019_group7/tree/master)
 [![codecov](https://codecov.io/gh/sumrid/soa2019_group7/branch/master/graph/badge.svg)](https://codecov.io/gh/sumrid/soa2019_group7)
-![java](https://img.shields.io/static/v1.svg?label=made%20with&message=java&color=orange&logo=java&style=flat)
+![java](https://img.shields.io/static/v1.svg?label=made%20with&message=java&color=f268b4&logo=java&style=flat)
+![docker](https://img.shields.io/static/v1.svg?label=container&message=Docker&color=1488C6&logo=docker&style=flat&logoColor=white)
 ![google](https://img.shields.io/static/v1.svg?label=deployed&message=cloud%20platform&color=4285f4&logo=google&style=flat&logoColor=white)
 # Project POS System
 ระบบอช่วยอำนวยความสะดวกในการขายของตามร้านต่างๆ
@@ -79,4 +80,4 @@
 
 ## API Documents
 [![](https://img.shields.io/badge/swagger-api%20document-blue.svg)](https://app.swaggerhub.com/apis-docs/sumrid/posSystem/1.0.0#/)
-[![](https://img.shields.io/badge/github-wiki-yellowgreen.svg)](https://github.com/sumrid/soa2019_group7/wiki/API-Document)
+[![](https://img.shields.io/static/v1.svg?label=github&message=Wiki&color=7150aa&logo=github&style=flat)](https://github.com/sumrid/soa2019_group7/wiki/API-Document)
