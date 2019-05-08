@@ -184,6 +184,5 @@ workflows:
       - build-report
       - build-product
       - build-stock
-      - build-web
       - deploy-web
 
