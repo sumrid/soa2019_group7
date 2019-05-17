@@ -16,23 +16,9 @@
 - ### test -- > `mvnw test` `gradlew test`
   
 ## Deployment
-  - ### API gateway [http://35.240.205.11](http://35.240.205.11/)
   ```
   https://soa-group7-235616.appspot.com/ {EndPoint}
   ```
-  |service|url|
-  | - |- |
-  |Web:| http://35.240.150.0/ |
-  |API gateway:| http://35.240.205.11/ |
-  |Bill service:| http://35.198.254.110/ |
-  |Product service:| http://35.247.131.103/ |
-  |Report service:| http://35.247.134.201/ |
-  |Stock service:| http://35.187.240.207/ |
-  |User service:| http://35.198.200.97/ |
-  |Prometheus: |http://35.240.252.217/ |
-  |Grafana: |http://35.240.150.0:3000/ |
-  |Eureka:| http://35.240.231.15:8761/ |
-  
    ###### example : https://<span></span>soa-group7-235616.appspot.com/employee
 
 ## API List
@@ -80,4 +66,4 @@
 
 ## API Documents
 [![](https://img.shields.io/badge/swagger-api%20document-blue.svg)](https://app.swaggerhub.com/apis-docs/sumrid/posSystem/1.0.0#/)
-[![](https://img.shields.io/static/v1.svg?label=github&message=Wiki&color=7150aa&logo=github&style=flat)](https://github.com/sumrid/soa2019_group7/wiki/API-Document)
+[![](https://img.shields.io/static/v1.svg?label=github&message=Wiki&color=7150aa&logo=github&style=flat)](https://github.com/sumrid/soa2019_group7/wiki/Services)
