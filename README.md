@@ -1,27 +1,26 @@
+# Project POS System
+ระบบช่วยอำนวยความสะดวกในการขายของตามร้านต่างๆ  
+
 [![CircleCI](https://circleci.com/gh/sumrid/soa2019_group7/tree/master.svg?style=svg)](https://circleci.com/gh/sumrid/soa2019_group7/tree/master)
 [![codecov](https://codecov.io/gh/sumrid/soa2019_group7/branch/master/graph/badge.svg)](https://codecov.io/gh/sumrid/soa2019_group7)
 ![java](https://img.shields.io/static/v1.svg?label=made%20with&message=java&color=f268b4&logo=java&style=flat)
 ![docker](https://img.shields.io/static/v1.svg?label=container&message=Docker&color=1488C6&logo=docker&style=flat&logoColor=white)
 ![google](https://img.shields.io/static/v1.svg?label=deployed&message=cloud%20platform&color=4285f4&logo=google&style=flat&logoColor=white)
-# Project POS System
-ระบบอช่วยอำนวยความสะดวกในการขายของตามร้านต่างๆ
 
-สวัสดีครับ
-
-## How to Build & Run
+## :airplane: How to Build & Run
 - ### complie -- > `mvnw clean package` `gradlew build`
 
 - ### run project -- > `mvnw spring-boot:run` `gradlew bootrun`
 
 - ### test -- > `mvnw test` `gradlew test`
   
-## Deployment
+## :rocket: Deployment
   ```
   https://soa-group7-235616.appspot.com/ {EndPoint}
   ```
    ###### example : https://<span></span>soa-group7-235616.appspot.com/employee
 
-## API List
+## :clipboard: API List
 - [User Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/user)
    - ```POST /user``` ~ เพิ่มข้อมูลบัญชีพนักงานสำหรับใช้งานระบบ<br>
    - ```GET /user``` ~ แสดงข้อมูลบัญชีพนักงานทั้งหมด<br>
@@ -51,19 +50,19 @@
 - [Report Service](https://github.com/sumrid/soa2019_group7/tree/master/src/main/java/com/example/pos/api/report)
    * `GET /reports` ~ แสดงข้อมูลรีพอร์ตทั้งหมดในระบบ 
 
-## Feature
+## :zap: Feature
 -	สร้างบิล
 -	เพิ่ม/ลบพนักงาน
 -	ดูรีพอร์ท
 -	จัดการสินค้า
 -	จัดการสต๊อก
 -	เพิ่ม/ลบสินค้า
-## Core Feature
+## :tada: Core Feature
 -	การสร้างบิล
 
-## Flow
+## :page_with_curl: Flow
 ![Imgur](https://i.imgur.com/ta07pOC.png)
 
-## API Documents
+## :book: API Documents
 [![](https://img.shields.io/badge/swagger-api%20document-blue.svg)](https://app.swaggerhub.com/apis-docs/sumrid/posSystem/1.0.0#/)
 [![](https://img.shields.io/static/v1.svg?label=github&message=Wiki&color=7150aa&logo=github&style=flat)](https://github.com/sumrid/soa2019_group7/wiki/Services)
